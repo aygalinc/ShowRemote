@@ -25,10 +25,15 @@ public class ShowDetailsActivity  extends Activity {
         String showDescription = getIntent().getStringExtra("description");
 
         toolbar.setTitle(showName); //Set the title of the toolbar to the series name
-        setActionBar(toolbar);
+	if(showDescription != null){        
+	 textView.setText(showDescription);
+	}else{
+	textView.setText("No description available ...");
+	}
 
-        textView.setText(showDescription);
-
+       
+	
+	setActionBar(toolbar);
     }
 }
 
