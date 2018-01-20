@@ -74,7 +74,10 @@ public class MainActivity extends AppCompatActivity {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 final Set<Show> showSet = new ConcurrentSkipListSet<>();
                 adapter = new RecylerAdapter(showSet);
-                String showToSearch = showEditTextDescription.getText().toString();
+        	//clear recycler view in case of new search
+		recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+		String showToSearch = showEditTextDescription.getText().toString();
                 if (showToSearch == null){
                     Log.w(TAG,"Empty text is not allowed");
                     return true;
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                recyclerView.setAdapter(adapter);
+        
                 hideKeyboard(showEditTextDescription);
                 return true;
             }
